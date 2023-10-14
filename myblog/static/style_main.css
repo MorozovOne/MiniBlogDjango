@@ -1,0 +1,112 @@
+body {
+    font-family: Inter;
+    margin: 0;
+}
+main {
+    margin-top: 48px;
+    margin-bottom: 170px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+._div_main_head_text {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+._h2_main_head_text {
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 30px */
+    letter-spacing: -0.4px;
+}
+._div_class_main_post {
+    display: flex;
+    width: 520px;
+    padding-bottom: 0px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 12px;
+    border: 1px solid #F2F2F2;
+    background: #FFF;
+    box-shadow: 0px 8px 32px 0px rgba(0, 0, 0, 0.04);
+}
+.bg-img_ {
+    height: 350px;
+    align-self: stretch;
+}
+._main_content_ {
+    display: flex;
+    padding: 16px 16px;
+    flex-direction: column;
+    align-self: stretch;
+}
+._h3--main {
+    margin: 0;
+    color: #000;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bolder;
+    line-height: 140%; /* 22.4px */
+}
+._a--main {
+    margin: 0;
+    text-decoration: none;
+    color: #000;
+    transition: all 0.15s ease-in-out;
+}
+._a--main:hover {
+    color: #1D77FF;
+}
+._p--main {
+    margin-top: 0px;
+    margin-bottom: 16px;
+    color: #494949;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+}
+._likes_main_ {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 16px;
+}
+._like_img_main {
+    width: 24px;
+    height: 24px;
+}
+._p--main_likes {
+    margin: 0;
+    color: #000;
+    font-family: Open Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 21px */
+}
+._div_p_author {
+    display: flex;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+._author--main {
+    margin: 0;
+}
+._teg_author {
+    text-decoration: none;
+    color: #000;
+    transition: all 0.15s ease-in-out;
+}
+._teg_author:hover {
+    color: #1D77FF;
+}

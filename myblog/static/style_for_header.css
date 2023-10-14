@@ -1,0 +1,174 @@
+header {
+    display: flex;
+    width: 100%;   
+    padding-top: 12px;
+    padding-bottom: 12px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #E8E8E8;
+    background: #FFF;
+    box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.04);
+}
+._main_logo {
+    margin-left: 70px;
+}
+._main_logo > a > img {
+    transition: all .2s ease-in-out;
+}
+._main_logo > a > img:hover {
+    transform: scale(1.05);
+}
+search {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+search > form {
+    gap: 12px;
+}
+._search_input_ {
+    background-color: #f2f2f2;
+    outline: none;
+    border: 0;
+    border-radius: 12px;
+    display: flex;
+    width: 344px;
+    padding: 16px 20px;
+    align-items: center;
+    color: black;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+._search_input_::placeholder {
+    color: #777;
+}
+._search_input_:focus {
+    color: #000;
+}
+._button_img_search {
+    border-radius: 12px;
+    background: #F1F1F1;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    outline: none;
+    border: 0;
+    cursor: pointer;
+}
+._button_img_search:hover {
+    background: #E2E2E2;
+    transition: all 0.2s ease-in-out;
+}
+._img_search_button {
+    width: 20px;
+    height: 20px;
+}
+._div_sign_and_login {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-right: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+._div_log_in_ava {
+    display: inline-flex;
+    padding: 5px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    gap: 12px;
+}
+    ._div_log_in_ava > img {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+    }
+    ._div_log_in_ava > p {
+        margin: 0;  
+        color: #000;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.8px;
+    }
+    ._div_log_in_ava > p:hover {
+        color: #1D77FF;
+    }
+
+._div_out_acc_ {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+._div_out_acc_ > a {
+    text-decoration: none;
+    border-radius: 12px;
+    color: #000;
+    padding: 16px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    background: #F1F1F1;
+}
+._div_out_acc_ > a:hover {
+    background: #F8F8F8;
+    padding: 16px;
+    transition: 0.2s all ease;
+}
+._div_log_in_button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+._div_log_in_button > a {
+    text-decoration: none;
+    border-radius: 12px;
+    color: #000;
+    padding: 16px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    background: #F1F1F1;
+}
+._div_log_in_button > a:hover {
+    background: #F8F8F8;
+    padding: 16px;
+    transition: 0.2s all ease;
+}
+._div_sign_in_button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+._div_sign_in_button > a {
+    text-decoration: none;
+    border-radius: 12px;
+    color: #000;
+    padding: 16px;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    background: #F1F1F1;
+}
+._div_sign_in_button > a:hover {
+    background: #F8F8F8;
+    padding: 16px;
+    transition: 0.2s all ease;
+}

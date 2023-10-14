@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link rel="stylesheet" href="{% static 'style_register.css' %}" type="text/css" media="">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
+</head>
+<body>
+	<a href="{% url 'Home' %}" class="_a_back_button">Кнопка назад - это сюда</a>
+
+	<div class="_form_sign">
+		<div class="_form_in_sign_">
+			<div class="_main_logo">
+				<a href="{% url 'Home' %}"><img src="http://{{ request.get_host }}/static/logo.svg" /></a>
+			</div>
+
+			{% block content %}
+			<form action='{% url 'register' %}' method="POST" novalidate>
+				{% csrf_token %}
+				<h2 class="_h2_form_action_">Вот тут у нас регистрация</h2>
+				<p class="_p_form_action_">Пароль должен быть из 8 символов! И обязательно две буквы! Одна маленькая, другая большая</p>
+
+				<input class="_input_user" type="text" name="username" maxlength="150" autofocus="" required="" id="id_username" placeholder="Имя пользователя"><br />
+				<input class="_input_email" type="email" name="email" maxlength="254" id="id_email" placeholder="Адрес электронной почты"><br />
+				<input class="_input_password_one" type="password" name="password1" autocomplete="new-password" required="" id="id_password1" placeholder="Пароль"><br />
+				<input class="_input_password_two" type="password" name="password2" autocomplete="new-password" required="" id="id_password2" placeholder="Подтвердите пароль"><br />
+				<input class="_button_submit" type="submit" value="Жмякай сюда" />
+
+				{% if messages %}
+				<div class="messages">
+					{% for message in messages %}
+					<div class="alert {% if message.tags %}alert-{{ message.tags }}" {% endif %}>
+						{{ message }}
+					</div>
+					{% endfor %}
+				</div>
+				{% endif %}
+
+			</form>
+			{% endblock content%}
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'style_for_header.css' %}" type="text/css" media="">
+</head>
+<header>
+    <div class="_main_logo">
+        <a href="{% url 'Home' %}"><img src="http://{{ request.get_host }}/static/logo.svg" /></a>
+    </div>
+
+    <search>
+            <form type="search" name="search" action="/" method="get" style="display: flex;">
+                <input type="text" size="40" placeholder="Поиск" class="_search_input_" name="q">
+                <button type="submit" class="_button_img_search"><img src="http://{{ request.get_host }}/static/search_m.svg" class="_img_search_button"/></button>
+            </form>
+    </search>
+
+    <div class="_div_sign_and_login">
+
+        {%if request.user.is_authenticated %}
+
+        <div class="_div_log_in_ava">
+            <img src="http://{{ request.get_host }}/static/ava_image.png" class="ava_image_div" />
+            <p>{{ request.user.username | title }}</p>
+        </div>
+
+        <div class="_div_out_acc_">
+            <a href="{% url 'logout' %}">Выйти из аккаунта</a>
+        </div>
+
+        {%else%}
+
+        <div class="_div_log_in_button">
+            <a href="{% url 'login' %}">Вход</a>
+        </div>
+
+
+
+        <div class="_div_sign_in_button">
+            <a href="{% url 'register' %}">Регистрация</a>
+        </div>
+        {%endif%}
+    </div>
+
+</header>

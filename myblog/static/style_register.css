@@ -1,0 +1,231 @@
+body {
+    margin: 0;
+    font-family: Inter;
+}
+._a_back_button {
+    margin: 24px 24px;
+    display: inline-flex;
+    padding: 16px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #1D77FF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    transition: all 0.2s ease-in-out;
+}
+._a_back_button:hover {
+    color: #0048B5;
+    background-color: #f1f1f1;
+}
+._form_sign {
+    gap: 20px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left: 40%;
+    margin-right: 40%;
+    align-content: center;
+    text-align: center;
+}
+._form_in_sign_ {
+    gap: 20px;
+    display: grid;
+}
+._h2_form_action_ {
+    margin-bottom: 12px;
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 30px */
+    letter-spacing: -0.4px;
+}
+._p_form_action_ {
+    margin-bottom: 20px;
+    color: #696969;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+    letter-spacing: -0.28px;
+}
+._input_user {
+    font-size: 16px;
+    display: flex;
+    width: 343px;
+    padding: 16px 20px;
+    align-items: center;
+    border-radius: 12px;
+    background: #F1F1F1;
+    outline: none;
+    border: 0;
+}
+._inpur_user::placeholder {
+    outline: none;
+    border: 0;
+    color: #777;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+._input_user:focus {
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    color: #000;
+}
+._input_email {
+    font-size: 16px;
+    display: flex;
+    width: 343px;
+    padding: 16px 20px;
+    align-items: center;
+    border-radius: 12px;
+    background: #F1F1F1;
+    outline: none;
+    border: 0;
+}
+
+._input_email::placeholder {
+    outline: none;
+    border: 0;
+    color: #777;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+
+._input_email:focus {
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    color: #000;
+}
+
+._input_email {
+    font-size: 16px;
+    display: flex;
+    width: 343px;
+    padding: 16px 20px;
+    align-items: center;
+    border-radius: 12px;
+    background: #F1F1F1;
+    outline: none;
+    border: 0;
+}
+
+._input_email::placeholder {
+    outline: none;
+    border: 0;
+    color: #777;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+
+._input_email:focus {
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    color: #000;
+}
+._input_password_one {
+    font-size: 16px;
+    display: flex;
+    width: 343px;
+    padding: 16px 20px;
+    align-items: center;
+    border-radius: 12px;
+    background: #F1F1F1;
+    outline: none;
+    border: 0;
+}
+
+    ._input_password_one::placeholder {
+        outline: none;
+        border: 0;
+        color: #777;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.8px;
+    }
+
+    ._input_password_one:focus {
+        outline: none;
+        border: 0;
+        font-size: 16px;
+        color: #000;
+    }
+
+._input_password_two {
+    font-size: 16px;
+    display: flex;
+    width: 343px;
+    padding: 16px 20px;
+    align-items: center;
+    border-radius: 12px;
+    background: #F1F1F1;
+    outline: none;
+    border: 0;
+}
+
+    ._input_password_two::placeholder {
+        outline: none;
+        border: 0;
+        color: #777;
+        font-family: Inter;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: -0.8px;
+    }
+
+    ._input_password_two:focus {
+        outline: none;
+        border: 0;
+        font-size: 16px;
+        color: #000;
+    }
+
+._button_submit {
+    border: 0;
+    display: flex;
+    width: 383px;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: #000;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+._button_submit:hover {
+   background: #212121;
+}
