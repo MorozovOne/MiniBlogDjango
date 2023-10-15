@@ -11,11 +11,20 @@
 <body>
     {% include 'blog/header.html' %}
     <main>
-        <div class="_div_main_head_text">
-            <h2 class="_h2_main_head_text">
-                Возможно найдете что то интересное ;)
-            </h2>
-        </div>
+        {% if 'q' in request.GET %}
+            <div class="_div_main_head_text">
+                <h2 class="_h2_main_head_text">
+                    Нашли результатов: {{ search_count }}
+                </h2>
+             </div>
+        {% else %}
+            <div class="_div_main_head_text">
+                <h2 class="_h2_main_head_text">
+                    Возможно найдете что то интересное ;)
+                </h2>
+             </div>
+        {% endif %}
+
         {% for post in post_list %}
         <div class="_div_class_main_post">
             <div class="bg-img_">

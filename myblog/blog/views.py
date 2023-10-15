@@ -53,20 +53,23 @@ def sign_up(request):
 
 
 class PostView(View):
+
     def get(self, request):
+        global search_count
+        search_count = 0
         search_query = request.GET.get('q', None)
         if search_query:
             posts = Post.objects.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query)).order_by('-id')
+            search_count = posts.count()
         else:
             posts = Post.objects.order_by('id')
-        return render(request, 'blog/blog.html', {'post_list': posts})
+        return render(request, 'blog/blog.html', {'post_list': posts, 'search_count': search_count})
 
 
 class PostDetail(View):
     def get(self, request, pk):
         post = Post.objects.get(id=pk)
         comment_count = Comments.objects.filter(post_id=post).count()
-        print(comment_count)
         return render(request, 'blog/blog_inside.html', {'post': post, 'com_count': comment_count})
 
 

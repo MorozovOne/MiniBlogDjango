@@ -1,16 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.idea",
     "\\myblog",
     "\\myblog\\blog",
-    "\\myblog\\blog\\migrations",
-    "\\myblog\\media",
     "\\myblog\\media\\image",
     "\\myblog\\static",
     "\\myblog\\templates",
     "\\myblog\\templates\\blog"
   ],
-  "SelectedNode": "\\myblog\\static\\style_register.css",
+  "SelectedNode": "\\myblog\\manage.py",
   "PreviewInSolutionExplorer": false
 }
