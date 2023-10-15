@@ -54,32 +54,36 @@
                     Не нравится
                 </a>
             </div>
+            {%if request.user.is_authenticated %}
+            <div class="_form_add_comments">
+                    <form action="{% url 'add_comments' post.id %}" method="post" style="width: 100%;">
+                        {% csrf_token %}
+                        <textarea name="text_comments" class="_textarea_comments" placeholder="Ваш комментарий"></textarea>
+                        <input type="submit" value="Оставить комментарий" class="_button_comments">
+
+                        {% if messages %}
+                        <div class="messages">
+                            {% for message in messages %}
+                            <div class="alert {% if message.tags %}alert-{{ message.tags }}" {% endif %}>
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                    </form>
+            </div>
+            {% else %}
 
             <div class="_form_add_comments">
-
-                <form action="{% url 'add_comments' post.id %}" method="post" style="width: 100%;">
-                    {% csrf_token %}
-                    <textarea name="text_comments" class="_textarea_comments" placeholder="Ваш комментарий"></textarea>
-                    <input type="submit" value="Оставить комментарий" class="_button_comments">
-
-                    {% if messages %}
-                    <div class="messages">
-                        {% for message in messages %}
-                        <div class="alert {% if message.tags %}alert-{{ message.tags }}" {% endif %}>
-                            {{ message }}
-                        </div>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-
-                </form>
-
+                <p>Если хотите оставить комментарий, авторизуйтесь<br> или зарегистрируйтесь в системе</p>
             </div>
 
-            <h2>Комментарии</h2>
+            {%endif%}
+            <h2>Комментариев ({{ com_count }})</h2>
 
             <div class="_div_comments_">
-                {% for comment in post.comments_set.all %}
+                {% for comment in post.comments_set.all reversed %}
                 <div class="_div_comment_">
                     <h4 class="_h4--main">{{ comment.users_comment }}</h4>
                     <p class="_p--main">{{ comment.text_comments }}</p>

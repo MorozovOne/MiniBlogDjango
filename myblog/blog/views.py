@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import View
 from .models import Post, Likes, Comments
 from .form import LoginForm, RegisterForm, CommentsForm
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from bs4 import BeautifulSoup
@@ -65,7 +65,10 @@ class PostView(View):
 class PostDetail(View):
     def get(self, request, pk):
         post = Post.objects.get(id=pk)
-        return render(request, 'blog/blog_inside.html', {'post': post})
+        comment_count = Comments.objects.filter(post_id=post).count()
+        print(comment_count)
+        return render(request, 'blog/blog_inside.html', {'post': post, 'com_count': comment_count})
+
 
 class AddComments(View):
     def post(self, request, pk):
