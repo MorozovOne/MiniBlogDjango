@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static '_profile.css' %}">
+</head>
+<body style="margin: 0; padding: 0;">
+    {% include 'blog/header.html' %}
+    <div class="img_profile">
+        <div class="_img">
+            <img src="http://{{ request.get_host }}/static/Frame50.png" alt="">
+        </div>
+        <div class="profile_info">
+            <div class="username"><p>zxczxczxc</p></div>
+            <div class="email"><p>adawdasdwad@huihuihui.sru</p></div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="public">
+            <div>
+                <a class="a" href="https://media.tenor.com/i1rsgMyOFgcAAAAd/cat-cat-love.gif" target="_blank">Мои опубликованные посты</a>
+            </div>
+            <div>
+                <p class="p">Мы все еще работаем над этим</p>
+            </div>
+        </div>
+        <div class="likes">
+            <div>
+                <a class="a" href="https://media.tenor.com/i1rsgMyOFgcAAAAd/cat-cat-love.gif" target="_blank">Мне понравилось</a>
+            </div>
+            <div>
+                <p class="p">Мы все еще работаем над этим</p>
+            </div>
+        </div>
+        <div class="settings">
+            <div>
+                <a class="a" href="https://media.tenor.com/i1rsgMyOFgcAAAAd/cat-cat-love.gif" target="_blank">Настройки</a>
+            </div>
+            <div>
+                <p class="p">Мы все еще работаем над этим</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

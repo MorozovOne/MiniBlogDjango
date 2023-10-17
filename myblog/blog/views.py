@@ -8,6 +8,15 @@ from django.contrib.auth import login, authenticate, logout
 from bs4 import BeautifulSoup
 
 
+
+class Profile(View):
+      def get(self, request):
+            return render(request, 'blog/profile.html')
+
+
+
+
+
 def sign_in(request):
     if request.method == 'GET':
         if request.user.is_authenticated:
