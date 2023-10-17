@@ -8,20 +8,20 @@
     </div>
 
     <search>
-
             <form type="search" name="search" action="/" method="get" style="display: flex;">
                 <input type="text" size="40" placeholder="Поиск" class="_search_input_" name="q">
                 <button type="submit" class="_button_img_search"><img src="http://{{ request.get_host }}/static/search_m.svg" class="_img_search_button"/></button>
             </form>
     </search>
 
-    <div class="_div_sign_and_login">
 
+    <div class="_div_sign_and_login">
+        <a href="{% url 'add_post' %}">Добавить статью</a>
         {%if request.user.is_authenticated %}
 
         <div class="_div_log_in_ava">
             <img src="http://{{ request.get_host }}/static/ava_image.png" class="ava_image_div" />
-            <p>{{ request.user.username | title }}</p>
+            <p><a href="{% url 'profile' %}">{{ request.user.username | title }}</a></p>
         </div>
 
         <div class="_div_out_acc_">

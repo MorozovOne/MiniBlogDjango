@@ -1,21 +1,54 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.views.generic.base import View
 from .models import Post, Likes, Comments
-from .form import LoginForm, RegisterForm, CommentsForm
-from django.db.models import Q, Count
+from .form import LoginForm, RegisterForm, CommentsForm, AddPostForm
+from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
-from bs4 import BeautifulSoup
+from datetime import datetime
+from django.contrib.auth.models import User
+
+
+class Profile(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            username = request.user
+            email = User.objects.filter(is_active=True).values_list('email', flat=True)
+            post = Post.objects.filter(users=username).order_by('-id')
+
+        return render(request, 'blog/profile.html', {'my_posts': post})
+
+
+def add_post(request):
+    date_time = datetime.now()
+    form = AddPostForm(request.POST, request.FILES)
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            if form.is_valid():
+                form = form.save(commit=False)
+                form.users = request.user
+                form.date = date_time
+                form.save()
+                messages.success(request, 'Поздравляю пост опубликован!')
+                return redirect('profile')
+            else:
+                print(form.errors)
+                messages.success(request, 'Поздравляю пост опубликован!')
+        else:
+            print(request.user)
+    else:
+        form = AddPostForm()
+    return render(request, 'blog/add_post.html', {'form': form, 'date': date_time})
 
 
 def sign_in(request):
+    '''Функция авторизации'''
     if request.method == 'GET':
         if request.user.is_authenticated:
             return print('')
 
         form = LoginForm()
         return render(request, 'blog/login.html', {'form': form})
-
 
     elif request.method == 'POST':
         form = LoginForm(request.POST)
@@ -26,19 +59,21 @@ def sign_in(request):
             if user:
                 login(request, user)
                 return redirect('/')
-        # either form not valid or user is not authenticated
+
         return render(request, 'blog/login.html', {'form': form})
 
 def sign_out(request):
+    '''Функция выхода'''
     logout(request)
     return redirect('/')
 
 def sign_up(request):
-    if request.method == 'GET':
+    '''Функция регистрации'''
+    if request.method == 'GET': # проверка отправлен ли нам GET запрос
         form = RegisterForm()
         return render(request, 'blog/register.html', {'form': form})
 
-    if request.method == 'POST':
+    if request.method == 'POST': # проверка отправлен ли нам POST запрос
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
@@ -53,28 +88,38 @@ def sign_up(request):
 
 
 class PostView(View):
-
+    '''Класс основной страницы'''
     def get(self, request):
-        global search_count
-        search_count = 0
+        global search_count # переменная для счета - результата поиска
+        global output_search
+        output_search = ""
+        search_count = 0 # инициализируем переменную
         search_query = request.GET.get('q', None)
         if search_query:
-            posts = Post.objects.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query)).order_by('-id')
-            search_count = posts.count()
+            posts = Post.objects.filter(Q(title__icontains=search_query) | Q(description__icontains=search_query)).order_by('-id') # Сама механика поиска (вызываем методом)
+            search_count = posts.count() # Количество результатов по поиску
+            output_search = "Нашли результатов: " + str(search_count)
+            if search_count == 0:
+                output_search = "Мы ничего не нашли"
         else:
-            posts = Post.objects.order_by('id')
-        return render(request, 'blog/blog.html', {'post_list': posts, 'search_count': search_count})
+            posts = Post.objects.order_by('-id') # Вытаскиваем статьи и сортируем в обратном порядке дабы выводить
+            # самые свежие вперед
+        return render(request, 'blog/blog.html', {'post_list': posts, 'output_search': output_search})
 
 
 class PostDetail(View):
+    '''Класс детальной страницы статьи'''
     def get(self, request, pk):
         post = Post.objects.get(id=pk)
-        comment_count = Comments.objects.filter(post_id=post).count()
+        comment_count = Comments.objects.filter(post_id=post).count() # считаем количество комментариев
         return render(request, 'blog/blog_inside.html', {'post': post, 'com_count': comment_count})
 
 
+
 class AddComments(View):
+    '''Класс добавления комментария'''
     def post(self, request, pk):
+        '''функция обработки комментария'''
         post = Post.objects.get(id=pk)
         form = CommentsForm(request.POST)
         if request.method == "POST":
@@ -94,17 +139,19 @@ class AddComments(View):
 
 
 def get_client_ip(request):
+    '''функция получения ip клиента'''
     x_forward_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forward_for:
-        ip = x_forward_for.split(',')[0]
+        ip = x_forward_for.split(',')[0]  #делим наш ip
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
 
 
 class AddLikes(View):
+    '''Класс и функция лайка'''
     def get(self, request, pk):
-        ip_client = get_client_ip(request)
+        ip_client = get_client_ip(request) #вытаскиваем ip пользователя
         try:
             Likes.objects.get(ip=ip_client, pos_id=pk)
             return redirect(f'/{pk}')
@@ -117,6 +164,7 @@ class AddLikes(View):
 
 
 class DeLike(View):
+    '''Класс и функция дизлайка чи как'''
     def get(self, request, pk):
         ip_client = get_client_ip(request)
         try:

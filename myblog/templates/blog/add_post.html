@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+
+    <form action="{% url 'add_post' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title" maxlength="256" required="" id="id_title">
+        <textarea name="description" cols="40" rows="10" maxlength="8000" required="" id="id_description"></textarea>
+        <time type="text" name="date" required="" id="id_date" style="opacity: 100%" datetime="{{ date_time }}"></time>
+        <input type="file" name="img" accept="image/*" id="id_img">
+        <input type="submit">
+    </form>
+
 </body>
 </html>
