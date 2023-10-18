@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic.base import View
+from django.views.generic import ListView
 from .models import Post, Likes, Comments
 from .form import LoginForm, RegisterForm, CommentsForm, AddPostForm
 from django.db.models import Q
@@ -7,6 +8,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
+
+
 
 
 class Profile(View):
@@ -87,7 +91,7 @@ def sign_up(request):
 
 
 
-class PostView(View):
+class PostView(ListView):
     '''Класс основной страницы'''
     def get(self, request):
         global search_count # переменная для счета - результата поиска
@@ -103,8 +107,10 @@ class PostView(View):
                 output_search = "Мы ничего не нашли"
         else:
             posts = Post.objects.order_by('-id') # Вытаскиваем статьи и сортируем в обратном порядке дабы выводить
-            # самые свежие вперед
-        return render(request, 'blog/blog.html', {'post_list': posts, 'output_search': output_search})
+        paginator = Paginator(posts, 2)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'blog/blog.html', {'page_obj': page_obj, 'output_search': output_search})
 
 
 class PostDetail(View):

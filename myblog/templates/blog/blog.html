@@ -25,7 +25,7 @@
              </div>
         {% endif %}
 
-        {% for post in post_list %}
+        {% for post in page_obj %}
         <div class="_div_class_main_post">
             <div class="bg-img_">
                 <a href="{{ post.id }}"><img style="width: 100%; height: 100%; border-radius: 12px 12px 0px 0px;" src="{{ post.img.url }}"></a>
@@ -48,6 +48,10 @@
             </div>
         </div>
         {% endfor %}
+
+        {% include 'blog/paginator.html' %}
+
+
     </main>
 </body>
 </html>
