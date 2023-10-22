@@ -19,7 +19,7 @@
                 <a href="{{ post.id }}"><img style="width: 20%; height: 100%; border-radius: 12px 12px 0px 0px;" src="{{ post.img.url }}"></a>
             </div>
             <div class="_main_content_">
-                <h3 class="_h3--main"><a class="_a--main" href="{{ post.id }}">{{ post.title }}</a></h3>
+                <h3 class="_h3--main"><a class="_a--main" href="http://{{ request.get_host }}/{{ post.id }}">{{ post.title }}</a></h3>
                 <div style="margin: 0; margin-top: 12px; margin-bottom: 12px;">{{ post.description|safe|truncatechars:155 }}</div>
                 <p class="_p--main">{{ post.date }}</p>
 

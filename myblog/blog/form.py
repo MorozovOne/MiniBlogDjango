@@ -3,9 +3,6 @@ from .models import Comments, Post
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-# class CommentsForm(forms.ModelForm):
-# class Meta:
-# fields = ('text_comments')
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=65)
