@@ -14,13 +14,14 @@
             </form>
     </search>
 
-    <div class="_div_sign_and_login">
 
+    <div class="_div_sign_and_login">
+        <a href="{% url 'add_post' %}">Добавить статью</a>
         {%if request.user.is_authenticated %}
 
         <div class="_div_log_in_ava">
             <img src="http://{{ request.get_host }}/static/ava_image.png" class="ava_image_div" />
-            <p>{{ request.user.username | title }}</p>
+            <p><a href="{% url 'profile' %}">{{ request.user.username | title }}</a></p>
         </div>
 
         <div class="_div_out_acc_">

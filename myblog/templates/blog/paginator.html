@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static '_paginator.css' %}" type="text/css" media="">
+{% if page_obj.has_other_pages %}
+        <div class="pagination">
+            <nav style="display: flex;">
+                <span class="step-links" style="display: flex;">
+                    {% for p in page_obj.paginator.page_range %}
+                        {% if page_obj.number == p %}
+                        <li>
+                            {{ p }}
+                        </li>
+                        {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                        <li>
+                            <a href="?page={{ p }}">{{ p }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </span>
+            </nav>
+        </div>
+{% endif %}
