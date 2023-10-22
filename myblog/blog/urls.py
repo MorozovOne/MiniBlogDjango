@@ -12,3 +12,4 @@ urlpatterns = [path('', views.PostView.as_view(), name='Home'),
                path('addpost/', views.add_post, name='add_post'),
                path('profile/', views.Profile.as_view(), name='profile')
                ]
+

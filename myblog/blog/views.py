@@ -11,8 +11,6 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 
 
-
-
 class Profile(View):
     def get(self, request):
         if request.user.is_authenticated:
