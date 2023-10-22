@@ -3,11 +3,10 @@
     "",
     "\\myblog",
     "\\myblog\\blog",
-    "\\myblog\\media\\image",
     "\\myblog\\static",
     "\\myblog\\templates",
     "\\myblog\\templates\\blog"
   ],
-  "SelectedNode": "\\myblog\\manage.py",
+  "SelectedNode": "\\myblog\\blog\\views.py",
   "PreviewInSolutionExplorer": false
 }
